@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Payment Gateway</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="user-avatar">
+            <img src="avatar.png" alt="User Avatar">
+        </div>
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Company Logo">
+        </div>
+        <h1>InstantPaye</h1>
+        <div id="payment-methods">
+            <h2>Select Payment Method</h2>
+            <button class="btn" onclick="selectPaymentMethod('credit-card')">Credit Card</button>
+            <button class="btn" onclick="selectPaymentMethod('paypal')">PayPal</button>
+        </div>
+        <div id="payment-details" style="display: none;">
+            <form id="payment-form">
+                <!-- Credit Card Form -->
+                <div id="credit-card-form" class="payment-form" style="display: none;">
+                    <label for="cc-number">Credit Card Number:</label>
+                    <input type="text" id="cc-number" required><br><br>
+                    <label for="cc-expiry">Expiry Date:</label><br>
+                    <input type="text" id="cc-expiry" required><br><br>
+                    <label for="cc-cvc">CVC:</label><br>
+                    <input type="text" id="cc-cvc" required>
+                </div>
+                <!-- PayPal Form -->
+                <div id="paypal-form" class="payment-form" style="display: none;">
+                    <label for="paypal-email">PayPal Email:</label>
+                    <input type="email" id="paypal-email" required>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn" onclick="processPayment()">Confirm Payment</button>
+                    <button type="button" class="btn cancel" onclick="cancelPayment()">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <div id="payment-confirmation" style="display: none;">
+            <h2>Payment Successful!</h2>
+            <p>Verification will be sent to your email.</p>
+        </div>
+        <div id="payment-error" style="display: none;">
+            <h2>Payment Failed!</h2>
+            <p>Please check your payment details and try again.</p>
+            <button class="btn" onclick="retryPayment()">Retry</button>
+            <button class="btn cancel" onclick="cancelPayment()">Cancel</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
